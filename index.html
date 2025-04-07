@@ -18,9 +18,24 @@
             color: #333;
         }
         .hero-section {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: url('https://i.ibb.co/ycftB5S9/2024-1-15-638409243706557779-stem-la-gi-1.webp') no-repeat center center;
+            background-size: cover;
             color: white;
             padding: 5rem 0;
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         .feature-icon {
             font-size: 2.5rem;
@@ -43,39 +58,46 @@
 <body>
     <!-- ========== NAVBAR ========== -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <i class="fas fa-briefcase me-2"></i>Bài Học STEM
-        </a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Trang chủ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="careers.html">Cơ hội nghề nghiệp</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Khaosat.html">Trắc nghiệm</a>
-                </li>
-            </ul>
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-briefcase me-2"></i>Bài Học STEM
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="careers.html">Cơ hội nghề nghiệp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Khaosat.html">Trắc nghiệm</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-    <!-- ========== HERO SECTION ========== -->
+    <!-- ========== HERO SECTION WITH IMAGE ========== -->
     <section class="hero-section">
-        <div class="container text-center">
+        <div class="container text-center hero-content">
             <h1 class="display-4 fw-bold mb-4">Hệ thống hướng nghiệp thông minh</h1>
             <p class="lead mb-5">Cung cấp thông tin chính xác về các ngành nghề phổ biến, hỗ trợ học sinh - sinh viên lựa chọn nghề nghiệp phù hợp</p>
-            <a href="#assessment" class="btn btn-light btn-lg px-4 py-2">
-                <i class="fas fa-clipboard-check me-2"></i>Làm trắc nghiệm ngay
-            </a>
-           <a href="careers.html" class="btn btn-primary btn-lg">
-    <i class="fas fa-briefcase me-2"></i>Khám phá nghề nghiệp
-</a>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="Khaosat.html" class="btn btn-light btn-lg px-4 py-2">
+                    <i class="fas fa-clipboard-check me-2"></i>Làm trắc nghiệm ngay
+                </a>
+                <a href="careers.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-briefcase me-2"></i>Khám phá nghề nghiệp
+                </a>
+            </div>
         </div>
     </section>
+
+    <!-- Các phần còn lại giữ nguyên... -->
 
     <!-- ========== GIỚI THIỆU SẢN PHẨM ========== -->
     <section class="py-5">
@@ -232,5 +254,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>le.min.js"></script>
 </body>
 </html>
