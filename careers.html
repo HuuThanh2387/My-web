@@ -70,6 +70,48 @@
         .navbar-toggler {
             border-color: rgba(255,255,255,0.5);
         }
+        
+         /* Thêm vào phần style */
+    .nav-pills {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .nav-pills .nav-link {
+        color: #2c3e50;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 50px;
+        padding: 8px 20px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        margin: 5px 0;
+    }
+    
+    .nav-pills .nav-link:hover {
+        background-color: #e9ecef;
+        border-color: #adb5bd;
+    }
+    
+    .nav-pills .nav-link.active {
+        background-color: #3498db;
+        color: white;
+        border-color: #3498db;
+        box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+    }
+    
+    /* Đảm bảo menu hiển thị tốt trên mobile */
+    @media (max-width: 768px) {
+        .nav-pills {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .nav-pills .nav-link {
+            width: 100%;
+            text-align: center;
+        }
+    }
     </style>
 </head>
 <body>
@@ -110,32 +152,44 @@
     </section>
 
    <!-- Career Categories -->
-<section class="py-5">
-    <div class="container">
-        <ul class="nav nav-pills mb-5 justify-content-center flex-wrap" id="careerTabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="pill" href="#technology">Công nghệ</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="pill" href="#health">Y tế - Sức khỏe </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="pill" href="#education">Giáo dục - Đào tạo</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="pill" href="#business">Kinh doanh & Quản lí</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="pill" href="#arts">Nghệ thuật - Thiết kế</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="pill" href="#engineering">Kỹ thuật - Công nghệ</a>
-            </li>
-             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="pill" href="#tourism">Du lịch - Nhà hàng - Khách sạn</a>
-            </li>
-        </ul>
-
+<!-- Thay đổi phần menu ngành nghề -->
+<ul class="nav nav-pills mb-5 justify-content-center flex-wrap" id="careerTabs">
+    <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="pill" href="#technology">
+            <i class="fas fa-laptop-code me-2"></i>Công nghệ
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="pill" href="#health">
+            <i class="fas fa-heartbeat me-2"></i>Y tế - Sức khỏe
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="pill" href="#education">
+            <i class="fas fa-graduation-cap me-2"></i>Giáo dục
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="pill" href="#business">
+            <i class="fas fa-chart-line me-2"></i>Kinh doanh
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="pill" href="#arts">
+            <i class="fas fa-palette me-2"></i>Nghệ thuật
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="pill" href="#engineering">
+            <i class="fas fa-cogs me-2"></i>Kỹ thuật
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="pill" href="#tourism">
+            <i class="fas fa-hotel me-2"></i>Du lịch
+        </a>
+    </li>
+</ul>
         <div class="tab-content">
             <!-- Công nghệ thông tin -->
             <div class="tab-pane container active" id="technology">
