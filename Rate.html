@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phiếu Đánh Giá Nghề Nghiệp</title>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("k40OHBj0WWmt476d1");
+    })();
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .feedback-option {
+      margin: 10px 0;
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .feedback-option:hover {
+      background: #d0e7ff;
+    }
+    .star-rating {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      direction: rtl;
+    }
+    .star-rating input[type="radio"] {
+      display: none;
+    }
+    .star-rating label {
+      font-size: 2em;
+      color: #ccc;
+      padding: 0 5px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .star-rating input[type="radio"]:checked ~ label,
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: gold;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 15px;
+      resize: none;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    #counter {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Đánh Giá Kết Quả Trắc Nghiệm</h2>
+    <form id="feedback-form">
+      <div class="feedback-option">
+        <input type="radio" name="feedback" value="Rất hài lòng" required> Tôi rất hài lòng và thấy nhóm ngành rất phù hợp với tôi.
+      </div>
+      <div class="feedback-option">
+        <input type="radio" name="feedback" value="Hài lòng"> Tôi hài lòng và thấy nhóm ngành tương đối phù hợp.
+      </div>
+      <div class="feedback-option">
+        <input type="radio" name="feedback" value="Cần cải tiến"> Cần cải tiến và nâng cao hơn nữa.
+      </div>
+      <div class="feedback-option">
+        <input type="radio" name="feedback" value="Ý kiến khác"> Ý kiến khác.
+      </div>
+
+      <div class="star-rating">
+        <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+        <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+        <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+        <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+        <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+      </div>
+
+      <textarea name="note" placeholder="Nhận xét thêm... (tuỳ chọn)"></textarea>
+
+      <button type="submit">Gửi đánh giá</button>
+      <div style="text-align: center; margin-top: 15px;">
+  <a href="index.html" style="
+    display: inline-block;
+    padding: 10px 25px;
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    color: white;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+  " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+    ← Quay lại Trang chủ
+  </a>
+</div>
+    </form>
+    <div id="counter">Bạn là người thứ <span id="count">...</span> đã tham gia</div>
+  </div>
+
+  <script>
+    let counter = localStorage.getItem('ratingCount') || 0;
+    document.getElementById("count").innerText = counter;
+
+    document.getElementById("feedback-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const feedback = document.querySelector('input[name="feedback"]:checked').value;
+      const rating = document.querySelector('input[name="rating"]:checked')?.value || "Không chọn sao";
+      const note = document.querySelector('textarea[name="note"]').value;
+
+      const templateParams = {
+        name: "Người dùng ẩn danh",
+        title: "Đánh giá nghề nghiệp",
+        email: "n/a",
+        message: `Phản hồi: ${feedback}\nSố sao đánh giá: ${rating}\nGhi chú: ${note}`
+      };
+
+      emailjs.send("service_pukoc3u", "__ejs-test-mail-service__", templateParams)
+        .then(() => {
+          alert("Cảm ơn bạn đã gửi đánh giá!");
+          counter++;
+          localStorage.setItem('ratingCount', counter);
+          document.getElementById("count").innerText = counter;
+        }, (error) => {
+          alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
+          console.error(error);
+        });
+    });
+  </script>
+</body>
+</html>
