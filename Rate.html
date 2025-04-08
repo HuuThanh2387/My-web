@@ -15,11 +15,17 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #74ebd5, #acb6e5);
+ then((response) => {
+   console.log('Gửi thành công!', response.status, response.text);
+   alert("Cảm ơn bạn đã gửi đánh giá!");
+}, (error) => {
+   console.error('Lỗi khi gửi:', error);
+   alert("Đã có lỗi: " + JSON.stringify(error));
+});     background: linear-gradient(to right, #74ebd5, #acb6e5);
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      min-height: 100vh;service_pukoc3u
     }
     .card {
       background: #fff;
@@ -163,7 +169,7 @@
         message: `Phản hồi: ${feedback}\nSố sao đánh giá: ${rating}\nGhi chú: ${note}`
       };
 
-      emailjs.send("service_pukoc3u", "__ejs-test-mail-service__", templateParams)
+      emailjs.send("", "template_e3uteih", templateParams)
         .then(() => {
           alert("Cảm ơn bạn đã gửi đánh giá!");
           counter++;
