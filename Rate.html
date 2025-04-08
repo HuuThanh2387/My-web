@@ -15,17 +15,11 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
- then((response) => {
-   console.log('Gửi thành công!', response.status, response.text);
-   alert("Cảm ơn bạn đã gửi đánh giá!");
-}, (error) => {
-   console.error('Lỗi khi gửi:', error);
-   alert("Đã có lỗi: " + JSON.stringify(error));
-});     background: linear-gradient(to right, #74ebd5, #acb6e5);
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;service_pukoc3u
+      min-height: 100vh;
     }
     .card {
       background: #fff;
@@ -133,32 +127,32 @@
 
       <button type="submit">Gửi đánh giá</button>
       <div style="text-align: center; margin-top: 15px;">
-  <a href="index.html" style="
-    display: inline-block;
-    padding: 10px 25px;
-    background: linear-gradient(135deg, #00b4db, #0083b0);
-    color: white;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: 0.3s;
-  " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-    ← Quay lại Trang chủ
-  </a>
-</div>
+        <a href="index.html" style="
+          display: inline-block;
+          padding: 10px 25px;
+          background: linear-gradient(135deg, #00b4db, #0083b0);
+          color: white;
+          border-radius: 30px;
+          font-weight: bold;
+          text-decoration: none;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          transition: 0.3s;
+        " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+          ← Quay lại Trang chủ
+        </a>
+      </div>
     </form>
     <div id="counter">Bạn là người thứ <span id="count">...</span> đã tham gia</div>
   </div>
 
   <script>
-    let counter = localStorage.getItem('ratingCount') || 0;
+    let counter = parseInt(localStorage.getItem('ratingCount')) || 0;
     document.getElementById("count").innerText = counter;
 
     document.getElementById("feedback-form").addEventListener("submit", function(e) {
       e.preventDefault();
 
-      const feedback = document.querySelector('input[name="feedback"]:checked').value;
+      const feedback = document.querySelector('input[name="feedback"]:checked')?.value || "Không chọn";
       const rating = document.querySelector('input[name="rating"]:checked')?.value || "Không chọn sao";
       const note = document.querySelector('textarea[name="note"]').value;
 
@@ -169,12 +163,13 @@
         message: `Phản hồi: ${feedback}\nSố sao đánh giá: ${rating}\nGhi chú: ${note}`
       };
 
-      emailjs.send("service_pukoc3u","template_e3uteih");
+      emailjs.send("service_pukoc3u", "template_e3uteih", templateParams)
         .then(() => {
           alert("Cảm ơn bạn đã gửi đánh giá!");
           counter++;
           localStorage.setItem('ratingCount', counter);
           document.getElementById("count").innerText = counter;
+          document.getElementById("feedback-form").reset();
         }, (error) => {
           alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
           console.error(error);
@@ -182,4 +177,4 @@
     });
   </script>
 </body>
-</html>>
+</html>
