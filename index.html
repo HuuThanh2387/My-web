@@ -18,12 +18,36 @@
             color: #333;
         }
         .hero-section {
-            background: url('https://i.ibb.co/ycftB5S9/2024-1-15-638409243706557779-stem-la-gi-1.webp') no-repeat center center;
-            background-size: cover;
-            color: white;
-            padding: 5rem 0;
-            position: relative;
-        }
+    background: url('https://i.ibb.co/ycftB5S9/2024-1-15-638409243706557779-stem-la-gi-1.webp') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 3rem 0; /* Giảm padding từ 5rem xuống 3rem */
+    min-height: 400px; /* Thêm chiều cao tối thiểu */
+    position: relative;
+    display: flex;
+    align-items: center; /* Canh giữa nội dung theo chiều dọc */
+}
+
+         /* CSS bo tròn và tùy chỉnh banner */
+.hero-section {
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.hero-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        border-radius: 10px;
+        margin: 10px;
+    }
+}
         .hero-section::before {
             content: '';
             position: absolute;
